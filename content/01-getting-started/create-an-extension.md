@@ -7,7 +7,7 @@ pre = "<b>1.3 </b>"
 Now let's add some functionality to Directus in the form of an extension.
 
 {{% notice warning %}}
-TODO: Hier komt een link naar de in-depth section van de guide
+TODO: I still have to write a section actually developing the extension.
 {{% /notice %}}
 
 First we need to generate our extension files:
