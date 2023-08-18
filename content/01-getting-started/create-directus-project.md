@@ -5,25 +5,15 @@ pre = "<b>1.1 </b>"
 +++
 
 Our first step is to structure our project.
-We will set up a project with multiple packages:
+Throughout his guide we will add multiple workspaces to the project
 
-- `directus-app` contains our directus application and configuration
-- `directus-extension-example` contains our directus extension
-
-{{% notice warning %}}
-It is of vital importance to start your extension package name with `directus-extension-`.
-If you don't, directus will not discover your extension.
-{{% /notice %}}
- 
-
-So let's create our root `package.json`:
+So we will start off by creating our root `package.json`:
 
 ```json
 {
   "private": true,
   "workspaces": [
-    "directus-app",
-    "directus-extension-example"
+    "directus-app"
   ]
 }
 ```
@@ -92,8 +82,7 @@ This will come in handy later:
 {
   "private": true,
   "workspaces": [
-    "directus-app",
-    "directus-extension-example"
+    "directus-app"
   ],
   "scripts": {
     "dev": "wsrun -m dev"
@@ -112,6 +101,8 @@ ADMIN_PASSWORD=admin
 
 DB_CLIENT=pg
 DB_CONNECTION_STRING=postgresql://directus:directus@127.0.0.1/directus
+
+EXTENSIONS_AUTO_RELOAD=true
 ```
 
 Now you should be able to start directus:
