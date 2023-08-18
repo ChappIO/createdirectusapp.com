@@ -10,3 +10,4 @@ author = "Thomas Biesaart"
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]
+
