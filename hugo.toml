@@ -1,10 +1,12 @@
 baseURL = 'http://localhost:1313'
 languageCode = 'en'
-title = 'My New Hugo Site'
+title = 'Directus Developer Guide'
 theme = "hugo-theme-learn"
 
 [params]
 editUrl = "https://github.com/ChappIO/directus-extension-development-guide/blob/main/content/"
+author = "Thomas Biesaart"
+
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]

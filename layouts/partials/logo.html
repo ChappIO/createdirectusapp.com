@@ -1,0 +1,5 @@
+<a id="logo" style="padding: 12px" href='{{ (cond (and (ne .Site.Params.landingPageURL nil) (.Site.IsMultiLingual)) .Site.Params.landingPageURL "/") }}'>
+    {{ with resources.Get "logo.png" }}
+    <img src="{{ .RelPermalink }}" alt="ChappIO Logo">
+    {{ end }}
+</a>

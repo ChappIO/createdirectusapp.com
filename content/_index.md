@@ -1,5 +1,5 @@
 +++
-title = "Thing"
+title = "Directus Developer Guide"
 +++
 # Directus App Development
 
