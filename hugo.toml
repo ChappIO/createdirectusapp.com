@@ -1,10 +1,10 @@
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
+baseURL = 'http://localhost:1313'
+languageCode = 'en'
 title = 'My New Hugo Site'
 theme = "hugo-theme-learn"
 
 [params]
-editUrl = "test"
+editUrl = "https://github.com/ChappIO/directus-extension-development-guide/blob/main/content/"
 
 [outputs]
-home = [ "HTML", "RSS", "JSON"]
+home = ["HTML", "RSS", "JSON"]
