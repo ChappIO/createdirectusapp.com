@@ -11,3 +11,14 @@ author = "Thomas Biesaart"
 [outputs]
 home = ["HTML", "RSS", "JSON"]
 
+[[menu.shortcuts]]
+name = "<i class='fab fa-github'></i> Github Repo"
+identifier = "github"
+url = "https://github.com/ChappIO/directus-extension-development-guide"
+weight = 10
+
+[[menu.shortcuts]]
+name = "<i class='fas fa-book'></i> Directus Docs"
+identifier = "directus"
+url = "https://docs.directus.io/extensions/introduction.html"
+weight = 15
