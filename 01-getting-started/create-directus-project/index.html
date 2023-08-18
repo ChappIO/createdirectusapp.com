@@ -1,0 +1,80 @@
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.117.0"><meta name=description content><meta name=author content="Thomas Biesaart"><link rel=icon href=/images/favicon.png type=image/png><title>Create a Directus Project :: Directus Developer Guide</title><link href=/css/nucleus.css?1692365549 rel=stylesheet><link href=/css/fontawesome-all.min.css?1692365549 rel=stylesheet><link href=/css/hybrid.css?1692365549 rel=stylesheet><link href=/css/featherlight.min.css?1692365549 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1692365549 rel=stylesheet><link href=/css/auto-complete.css?1692365549 rel=stylesheet><link href=/css/atom-one-dark-reasonable.css?1692365549 rel=stylesheet><link href=/css/theme.css?1692365549 rel=stylesheet><link href=/css/tabs.css?1692365549 rel=stylesheet><link href=/css/hugo-theme.css?1692365549 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1692365549></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=/01-getting-started/create-directus-project/><nav id=sidebar><div id=header-wrapper><div id=header><a id=logo style=padding:12px href=/><img src=/logo.png alt="ChappIO Logo"></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=/js/lunr.min.js?1692365549></script>
+<script type=text/javascript src=/js/auto-complete.js?1692365549></script>
+<script type=text/javascript>var baseurl="http://localhost:1313"</script><script type=text/javascript src=/js/search.js?1692365549></script></div><section id=homelinks><ul><li><a class=padding href=/><i class='fas fa-home'></i> Home</a></li></ul></section><div class=highlightable><ul class=topics><li data-nav-id=/01-getting-started/ title="Getting Started" class="dd-item
+parent"><a href=/01-getting-started/><b>1. </b>Getting Started</a><ul><li data-nav-id=/01-getting-started/create-directus-project/ title="Create a Directus Project" class="dd-item active"><a href=/01-getting-started/create-directus-project/><b>1.1 </b>Create a Directus Project</a></li><li data-nav-id=/01-getting-started/commit-schema-to-git/ title="Commit Your Schema to Git" class=dd-item><a href=/01-getting-started/commit-schema-to-git/><b>1.2 </b>Commit Your Schema to Git</a></li><li data-nav-id=/01-getting-started/create-an-extension/ title="Create an Extension" class=dd-item><a href=/01-getting-started/create-an-extension/><b>1.3 </b>Create an Extension</a></li></ul></li></ul><section id=footer></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=top-github-link><a class=github-link title='Edit this page' href=https://github.com/ChappIO/directus-extension-development-guide/blob/main/content/01-getting-started/create-directus-project.md target=blank><i class="fas fa-code-branch"></i>
+<span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
+<span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links><a href=/>Directus Developer Guide</a> > <a href=/01-getting-started/>Getting Started</a> > Create a Directus Project</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Create a Directus Project</h1><p>Our first step is to structure our project.
+Throughout his guide we will add multiple workspaces to the project</p><p>So we will start off by creating our root <code>package.json</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;private&#34;</span>: <span style=color:#66d9ef>true</span>,
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;workspaces&#34;</span>: [
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;directus-app&#34;</span>
+</span></span><span style=display:flex><span>  ]
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>And our <code>directus-app/package.json</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;directus-app&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;0.0.0&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;license&#34;</span>: <span style=color:#e6db74>&#34;MIT&#34;</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Then we install <code>directus</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>yarn workspace directus-app add directus
+</span></span></code></pre></div><p>To be able to run directus, we need a database to connect to.
+Let&rsquo;s set up a <code>postgres</code> database using <code>directus-app/docker-compose.yml</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#34;3.8&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>services</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>database</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>postgres:15</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>POSTGRES_USER</span>: <span style=color:#ae81ff>directus</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>POSTGRES_PASSWORD</span>: <span style=color:#ae81ff>directus</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;5432:5432&#34;</span>
+</span></span></code></pre></div><p>Now to run scripts we will install 2 utilities into our project: <code>wsrun</code> to run scripts across multiple workspaces and <code>npm-run-all</code> to run scripts sequentially or in parallel.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>yarn add -D -W wsrun npm-run-all
+</span></span></code></pre></div><p>We can now add our scripts to <code>directus-app</code> by editing <code>directus-app/package.json</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;directus-app&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;0.0.0&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;license&#34;</span>: <span style=color:#e6db74>&#34;MIT&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;dependencies&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#960050;background-color:#1e0010>...</span>
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;scripts&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;dev&#34;</span>: <span style=color:#e6db74>&#34;run-s dev:**&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;dev:docker&#34;</span>: <span style=color:#e6db74>&#34;docker compose up -d&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;dev:bootstrap&#34;</span>: <span style=color:#e6db74>&#34;directus bootstrap&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;dev:start&#34;</span>: <span style=color:#e6db74>&#34;directus start&#34;</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>And we will also add the <code>dev</code> script our root <code>package.json</code> which forwards the <code>dev</code> script to all our workspaces.
+This will come in handy later:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;private&#34;</span>: <span style=color:#66d9ef>true</span>,
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;workspaces&#34;</span>: [
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;directus-app&#34;</span>
+</span></span><span style=display:flex><span>  ],
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;scripts&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;dev&#34;</span>: <span style=color:#e6db74>&#34;wsrun -m dev&#34;</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>And finally, configure your directus instance using <code>directus-app/.env</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-.env data-lang=.env><span style=display:flex><span>KEY<span style=color:#f92672>=</span>development key
+</span></span><span style=display:flex><span>SECRET<span style=color:#f92672>=</span>development secret
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ADMIN_EMAIL<span style=color:#f92672>=</span>admin@example.com
+</span></span><span style=display:flex><span>ADMIN_PASSWORD<span style=color:#f92672>=</span>admin
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>DB_CLIENT<span style=color:#f92672>=</span>pg
+</span></span><span style=display:flex><span>DB_CONNECTION_STRING<span style=color:#f92672>=</span>postgresql://directus:directus@127.0.0.1/directus
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>EXTENSIONS_AUTO_RELOAD<span style=color:#f92672>=</span>true
+</span></span></code></pre></div><p>Now you should be able to start directus:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>yarn dev
+</span></span></code></pre></div><p>When you see the message <code>Server started at http://0.0.0.0:8055</code> you will be able to open directus on <a href=http://localhost:8055>http://localhost:8055</a>.</p><footer class=footline></footer></div></div><div id=navigation><a class="nav nav-prev" href=/01-getting-started/ title="Getting Started"><i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/01-getting-started/commit-schema-to-git/ title="Commit Your Schema to Git" style=margin-right:0><i class="fa fa-chevron-right"></i></a></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1692365549></script>
+<script src=/js/perfect-scrollbar.min.js?1692365549></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1692365549></script>
+<script src=/js/jquery.sticky.js?1692365549></script>
+<script src=/js/featherlight.min.js?1692365549></script>
+<script src=/js/highlight.pack.js?1692365549></script>
+<script>hljs.initHighlightingOnLoad()</script><script src=/js/modernizr.custom-3.6.0.js?1692365549></script>
+<script src=/js/learn.js?1692365549></script>
+<script src=/js/hugo-learn.js?1692365549></script>
+<script src=/mermaid/mermaid.js?1692365549></script>
+<script>mermaid.initialize({startOnLoad:!0})</script></body></html>
