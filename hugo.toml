@@ -1,12 +1,11 @@
-baseURL = 'http://localhost:1313'
+baseURL = 'https://www.createdirectusapp.com'
 languageCode = 'en'
 title = 'Directus Developer Guide'
 theme = "hugo-theme-learn"
 
 [params]
-editUrl = "https://github.com/ChappIO/directus-extension-development-guide/blob/main/content/"
+editUrl = "https://github.com/ChappIO/www.createdirectusapp.com/blob/main/content/"
 author = "Thomas Biesaart"
-
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]
@@ -14,7 +13,7 @@ home = ["HTML", "RSS", "JSON"]
 [[menu.shortcuts]]
 name = "<i class='fab fa-github'></i> Github Repo"
 identifier = "github"
-url = "https://github.com/ChappIO/directus-extension-development-guide"
+url = "https://github.com/ChappIO/www.createdirectusapp.com"
 weight = 10
 
 [[menu.shortcuts]]
