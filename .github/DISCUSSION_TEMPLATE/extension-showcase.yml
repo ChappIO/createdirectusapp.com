@@ -1,0 +1,24 @@
+body:
+  - type: input
+    id: package
+    attributes:
+      label: Package Name
+      description: What is the name of your package on npm?
+      placeholder: directus-extension-***
+    validations:
+      required: true
+  - type: input
+    id: sourceUrl
+    attributes:
+      label: Repository Link
+      description: What is the link to your public sources?
+      placeholder: https://github.com/...
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Package Description
+      description: How does this package improve the development or operations experience?
+    validations:
+      required: false
