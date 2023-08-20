@@ -1,7 +1,7 @@
 +++
 title = "Getting Started"
 chapter = true
-weight = 5
+weight = 1
 pre = "<b>1. </b>"
 +++
 
