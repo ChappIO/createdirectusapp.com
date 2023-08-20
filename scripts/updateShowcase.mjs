@@ -35,6 +35,5 @@ menuTitle = "${title}"
         });
 }
 
-updateShowcase('directus-extension-seed', 'https://raw.githubusercontent.com/ChappIO/directus-extension-seed/main/README.md');
 updateShowcase('directus-extension-models', 'https://raw.githubusercontent.com/ChappIO/directus-extension-models/main/README.md');
 updateShowcase('directus-extension-prometheus', 'https://raw.githubusercontent.com/ChappIO/directus-extension-prometheus/main/README.md');
