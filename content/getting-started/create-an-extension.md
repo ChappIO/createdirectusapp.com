@@ -5,10 +5,7 @@ pre = "<b>1.3 </b>"
 +++
 
 Now let's add some functionality to Directus in the form of an extension.
-
-{{% notice warning %}}
-TODO: I still have to write a section actually developing the extension.
-{{% /notice %}}
+In this guide we will set up a `bundle` extension which is an extension that can contain features from all available types of extensions.
 
 First we need to generate our extension files:
 
